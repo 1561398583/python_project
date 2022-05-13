@@ -1,0 +1,28 @@
+{
+    "user_id_list": ["2640113513"],
+    "filter": 1,
+    "since_date": "2010-01-01",
+    "end_date": "now",
+    "random_wait_pages": [1, 5],
+    "random_wait_seconds": [6, 10],
+    "global_wait": [[1000, 3600], [500, 2000]],
+    "write_mode": ["json"],
+    "pic_download": 0,
+    "video_download": 1,
+	"file_download_timeout": [5, 5, 10],
+	"result_dir_name": 1,
+	"cookie":"SINAGLOBAL=4045166587677.128.1617093181167; ULV=1617274969050:4:3:4:7077268667971.459.1617274969011:1617267845307; SUBP=0033WrSXqPxfM725Ws9jqgMF55529P9D9Whis7Bljw-wJdnwKoN5a8BK5NHD95QNSKn01h.feh5pWs4DqcjiMND0IoqE1Kzc; UOR=,,graph.qq.com; webim_unReadCount=%7B%22time%22%3A1617275246965%2C%22dm_pub_total%22%3A1%2C%22chat_group_client%22%3A0%2C%22chat_group_notice%22%3A0%2C%22allcountNum%22%3A1%2C%22msgbox%22%3A0%7D; SUB=_2A25NYdk5DeThGeFL41EZ-SvMyz2IHXVuredxrDV8PUJbkNANLVHNkW1NfY7MjXyWj3JX8SvGflIdWlD41qp3LWF5; _s_tentry=login.sina.com.cn; Apache=7077268667971.459.1617274969011; login_sid_t=3205c91bfed25a26a68658e96c9edeed; cross_origin_proto=SSL; crossidccode=CODE-yf-1LrVas-24GTq9-yUxqIxoCo7j5NKW0db030; appkey=; WBStorage=8daec78e6a891122|undefined; WBtopGlobal_register_version=2021040119; SSOLoginState=1617275241; wvr=6",
+    "mysql_config": {
+        "host": "localhost",
+        "port": 3306,
+        "user": "root",
+        "password": "123456",
+        "charset": "utf8mb4"
+    },
+    "kafka_config": {
+        "bootstrap-server": "127.0.0.1:9092",
+        "weibo_topics": ["spider_weibo"],
+        "user_topics": ["spider_weibo"]
+    },
+    "sqlite_config": "weibo.db"
+}

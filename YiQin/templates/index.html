@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>疫情监控</title>
+		<link href="../static/css/main.css" rel="stylesheet"/>
+		<script src="../static/js/jquery-3.6.0.js"></script>
+		<script src="../static/js/echarts.js"></script>
+		<script src="../static/js/echarts-woedcloud.js"></script>
+	</head>
+	<body>
+		<div id="title">全国疫情追踪</div>
+		<div id="time">
+			<div id="timeStr">2021年10月14日</div>
+		</div>
+		<div id="left1">左1</div>
+		<div id="left2">左2</div>
+		<div id="center1">
+			<div class="num" id="ensure">123</div>
+			<div class="num" id="suspected">456</div>
+			<div class="num" id="cure">789</div>
+			<div class="num" id="death">0</div>
+			<div class="text">累计确诊</div>
+			<div class="text">疑似病例</div>
+			<div class="text">累计治愈</div>
+			<div class="text">累计死亡</div>
+		</div>
+		<div id="center2">中2</div>
+		<div id="right1">右1</div>
+		<div id="right2">右2</div>
+		
+	<script>
+	function getTime(){
+		$.ajax({
+			url : "/get_time",
+			timeout : 10000,
+			success : function(data){
+				$("#timeStr").text(data);
+			},
+			error : function(xhr, err, ec){
+				
+			}
+		})
+	}
+	
+	function getTotal(){
+		$.ajax({
+			url : "/get_total",
+			timeout : 10000,
+			success : function(data){
+				$("#ensure").text(data.ensure);
+				$("#suspected").text(data.suspected);
+				$("#cure").text(data.cure);
+				$("#death").text(data.death);
+			},
+			error : function(xhr, err, ec){
+				
+			}
+		})
+	}
+	
+	// 基于准备好的dom，初始化echarts实例
+	var chart_left1= echarts.init($("#left1")[0]);
+	
+	// 指定图表的配置项和数据
+	var option_left1 = {
+		title: {
+			text: 'ECharts 入门示例'
+		},
+		tooltip: {},
+		legend: {
+			data:['销量']
+		},
+		xAxis: {
+			data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+		},
+		yAxis: {},
+		series: [{
+			name: '销量',
+			type: 'bar',
+			data: [5, 20, 36, 10, 10, 20]
+		}]
+	};
+	
+	// 使用刚指定的配置项和数据显示图表。
+	chart_left1.setOption(option_left1);
+	
+	function getLeft1(){
+		$.ajax({
+			url : "/get_left1",
+			timeout : 10000,
+			success : function(data){
+				option_left1.series[0].data = data;
+				// 使用刚指定的配置项和数据显示图表。
+				chart_left1.setOption(option_left1);
+				
+			},
+			error : function(xhr, err, ec){
+				console.log("get_left1 fail")
+			}
+		})
+	}
+	
+	
+	
+	
+	
+	
+	
+	setInterval(getTime, 1000);
+	setInterval(getTotal, 10000);
+	setInterval(getLeft1, 1000);
+	</script>
+	</body>
+</html>
